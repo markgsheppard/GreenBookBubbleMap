@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+/* Custom Properties */
+.gbbm {
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-gray-950: #0a0a0a;
+  --color-green-50: #f7fcf5;
+  --color-green-100: #e8f6e3;
+  --color-green-200: #d3eecd;
+  --color-green-300: #b7e2b1;
+  --color-green-400: #97d494;
+  --color-green-500: #73c378;
+  --color-green-600: #4daf62;
+  --color-green-700: #2f984f;
+  --color-green-800: #157f3b;
+  --color-green-900: #036429;
+  --color-green-950: #00441b;
+
+  --color-background: var(--color-white);
+  --color-text: var(--color-gray-800);
+
+  /* Typography */
+  --font-family: "Oswald", serif;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+
+  /* Sizes */
+  --size-00: 1px;
+  --size-0: 2px;
+  --size-1: 4px;
+  --size-2: 8px;
+  --size-3: 12px;
+  --size-4: 16px;
+  --size-5: 20px;
+  --size-6: 24px;
+  --size-7: 28px;
+  --size-8: 32px;
+  --size-9: 36px;
+  --size-10: 40px;
+  --size-11: 44px;
+  --size-12: 48px;
+
+  /* Others */
+  --map-width: 975px;
+  --max-container-width: 1000px;
+
+  --color-map-stroke: var(--color-background);
+  --color-map-fill: var(--color-green-200);
+  --color-bubble-stroke: var(--color-background);
+  --color-bubble-active-stroke: var(--color-green-950);
+  --color-bubble-fill: var(--color-green-700);
+  --fill-opacity-bubble: 0.5;
+
+  --stroke-width-map: 1px;
+  --stroke-width-bubble: 0.5px;
+  --stroke-width-active-bubble: 1.5px;
+}
+
+/* Reset */
+.gbbm,
+.gbbm *,
+.gbbm *::before,
+.gbbm *::after {
+  box-sizing: border-box;
+}
+
+.gbbm,
+.gbbm * {
+  margin: 0;
+  padding: 0;
+}
+
+.gbbm img,
+.gbbm canvas,
+.gbbm svg {
+  display: block;
+  max-width: 100%;
+}
+
+.gbbm input,
+.gbbm button,
+.gbbm textarea,
+.gbbm select {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: currentColor;
+}
+
+.gbbm ol,
+.gbbm ul {
+  list-style: none;
+}
+
+/* General */
+.gbbm {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  max-width: var(--max-container-width);
+  margin-inline: auto;
+}
+
+.gbbm .gbbm__bubble-map {
+  margin-inline: auto;
+  max-width: var(--map-width);
+  display: flex;
+  justify-content: center;
+}
+
+/* Bubble map */
+.gbbm .bubble-map {
+  position: relative;
+  display: grid;
+}
+
+.gbbm .bubble-map > * {
+  grid-area: 1 / 1;
+  max-width: 100%;
+  height: auto;
+}
+
+.gbbm .canvas-bubbles-hidden,
+.gbbm .svg-active {
+  pointer-events: none;
+}
+
+.gbbm .bubble-map .active-bubble {
+  opacity: 0;
+  stroke-width: var(--stroke-width-active-bubble);
+  stroke: var(--color-bubble-active-stroke);
+  fill: var(--color-bubble-fill);
+  fill-opacity: var(--fill-opacity-bubble);
+  vector-effect: non-scaling-stroke;
+}
+
+.gbbm .bubble-map .active-bubble.is-visible {
+  opacity: 1;
+}
+
+/* Tooltip */
+.gbbm .tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--color-background);
+  padding: var(--size-4);
+  border-radius: var(--size-1);
+  box-shadow: 0 var(--size-0) var(--size-1) rgba(0, 0, 0, 0.075);
+  border: 1px solid var(--color-border);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+  will-change: transform, opacity;
+}
+
+.gbbm .tooltip.is-visible {
+  opacity: 1;
+}
+
+.gbbm .tooltip-parent {
+  position: relative;
+}
+
+.gbbm strong {
+  font-weight: var(--font-weight-medium);
+}
